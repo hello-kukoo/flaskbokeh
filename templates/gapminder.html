@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% block body %}
+    <div class="col-md-6 centered btn-group-lg btn-group-vertical">
+            <h1>Flask-Bokeh example</h1>
+
+            <form action = "/gapminder" method = "POST">
+            <div class="dropdown">
+                <select name="first_country">
+                    {% for country in country_names %}
+                        {% if first_country == country %}
+                            <option selected value="{{ country }}">{{ country }}</option>
+                        {% else %}
+                            <option value="{{ country }}">{{ country }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="dropdown">
+                <select name="second_country">
+                    {% for country in country_names %}
+                        {% if second_country == country %}
+                            <option selected value="{{ country }}">{{ country }}</option>
+                        {% else %}
+                            <option value="{{ country }}">{{ country }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+
+            <select name="selected_attribute">
+                {% for attribute in attribute_names %}
+                    {% if selected_attribute == attribute %}
+                        <option selected value="{{ attribute }}">{{ attribute }}</option>
+                    {% else %}
+                        <option value="{{ attribute }}">{{ attribute }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+
+            <input type="submit">
+            </form>
+
+            {{ script|safe }}
+            {{ div|safe }}
+        </div>
+{% endblock %}
+
+
